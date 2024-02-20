@@ -62,8 +62,8 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'greenblue'
-          slot-name: 'greenblue-Green'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_GREEN }}
+          slot-name: ${{ github.event.inputs.environment == 'greenblue' && 'production' || github.event.inputs.environment }}
+          publish-profile: ${{ secrets['AZUREAPPSERVICE_PUBLISHPROFILE_' + (github.event.inputs.environment == 'greenblue' ? 'PRODUCTION' : github.event.inputs.environment)] }}
           package: .
           
       - name: Delete Artifact
