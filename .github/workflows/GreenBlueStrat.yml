@@ -63,7 +63,7 @@ jobs:
         with:
           app-name: 'greenblue'
           slot-name: 'greenblue-Green'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1440CEF6D5084194BA1B5B131AE28235 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_GREEN }}
           package: .
           
       - name: Delete Artifact
