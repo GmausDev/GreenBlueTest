@@ -48,12 +48,12 @@ jobs:
     needs: build
     if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
     environment:
-      name: ${{ github.event.inputs.environment == 'greenblue-Green' && 'Staging' || 'Production' }}
+      name: ${{ github.event.inputs.environment }}
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: .net-app
 
@@ -61,7 +61,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'techcommunitycalendar'
+          app-name: 'greenblue'
           slot-name: ${{ github.event.inputs.environment }}
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1440CEF6D5084194BA1B5B131AE28235 }}
           package: .
