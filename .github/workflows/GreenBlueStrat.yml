@@ -62,7 +62,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'greenblue'
-          slot-name: ${{ github.event.inputs.environment }}
+          slot-name: 'greenblue-Green'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1440CEF6D5084194BA1B5B131AE28235 }}
           package: .
           
